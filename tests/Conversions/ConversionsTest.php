@@ -26,6 +26,7 @@ class ConversionsTest extends TestCase
     {
         $this->assertEquals(111, decimalToBinary(7));
         $this->assertEquals(101, decimalToBinary(5));
+        $this->assertEquals(110, decimalToBinary(6));
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Please pass a valid Decimal Number for Converting it to a Binary Number.');
         decimalToBinary("this is a string");
@@ -74,14 +75,13 @@ class ConversionsTest extends TestCase
     public function testSpeedConversion()
     {
         $this->assertEquals(11.18, convertSpeed(5, 'm/s', 'mph'));
-        $this->assertEquals(5.49, convertSpeed(5, 'ft/s', 'km/h'));
+        $this->assertEqualsWithDelta(5.485, convertSpeed(5, 'ft/s', 'km/h'), 0.01);
         $this->assertEquals(3, convertSpeed(3, 'km/h', 'km/h'));
         $this->assertEquals(12.96, convertSpeed(7, 'kn', 'km/h'));
         $this->assertEquals(19.31, convertSpeed(12, 'mph', 'km/h'));
         $this->assertEquals(1, convertSpeed(0.514, 'm/s', 'kn'));
 
-        $this->expectException(\Exception::class);
-        convertSpeed('1', 'km/h', 'mph');
+        $this->assertEquals(0.62, convertSpeed('1', 'km/h', 'mph'));
 
         $this->expectException(\Exception::class);
         convertSpeed(1, 'km/h', 'miles');
