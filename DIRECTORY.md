@@ -186,6 +186,8 @@
     * [Sortingtest](./tests/Sorting/SortingTest.php)
   * Strings
     * [Stringstest](./tests/Strings/StringsTest.php)
+  * Utils
+    * [Arrayhelperstest](./tests/Utils/ArrayHelpersTest.php)
 
 ## Utils
   * [Arrayhelpers](./Utils/ArrayHelpers.php)
